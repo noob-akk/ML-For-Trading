@@ -401,3 +401,283 @@ __AUM__:  *Assets Under Management* is the total amount of money being managed b
 
 * If prices go after short selling, you make loss when you exit the position
 
+
+# Lesson 13: What is a company's worth?
+
+* True value of company
+* Stock price goes above true value, sell
+* Stock price goes below true value, buy
+
+
+### Ways to estimate worth
+
+**Intrinsic Value**  
+Value of the company estimated by dividends
+
+**Book value**  
+Value of the assets the company owns  
+Ex: Factories etc
+
+**Market Cap**  
+Value of the stock and number of outstanding stocks  
+
+
+### The value of a future dollar
+Present Value$~=~\\frac{Future~Value}{(1+Interest~Rate)^{Years}}$
+
+**Intrinsic Value** $=~\\sum\\frac{Future~Value}{(1+Interest~Rate)^{i}}$  
+
+$~~~~~~~~~~~~~~~~~~~~~~= \\frac{Future~Value*(1+Interest~Rate)}{Interest~Rate}$  
+
+$~~~~~~~~~~~~~~~~~~~~~~= \\frac{Future~Value}{Discount~Rate}$
+
+**Book Value** = Total value of the assets minus intangible assets and liabilities
+
+**Market Capitalization** = #shares * price
+
+
+# Lesson 14: Capital Assets Pricing Model (CAPM)
+
+
+### Portfolio
+
+* $r_{s}$, $w_{s}$ are returns, weights of each stock in portfolio
+* Return of portfolio $r_{p}~=~\\sum r_{s}*w_{s}$
+* $\\sum abs(w_{s})~=~1$
+
+
+### Market Portfolio
+
+* Every country has index of stocks
+* Weight of each stock in the index is $w_{i}~=~Market~Cap_{i}/\\sum Market~Cap_{j}$
+* SP500 is a market portfolio of 500 stocks
+
+
+### CAPM Equation
+$r_{i}(t)=\\beta_{i}*r_{m}(t)+\\alpha_{i}(t)$
+* Return of markets: $r_{m}(t)$
+* Return of stock i: $r_{i}(t)$
+* Significant portion of return of the stock is from the growth of market
+* Most stocks have $\\beta$ as 1
+* CAPM says $E[\\alpha_{i}(t)]=0$; Its essentially a random variable
+* $\\beta,~\\alpha$ are **slope, intercept** of line fitted between stock, market daily returns' scatter
+
+
+### CAPM vs Active management
+
+* passive: buy index portfolio and hold
+* active: pick stocks with different weights compared to index
+    * Some have underweight
+    * Some have overweight
+* CAPM says $E[\\alpha_{i}(t)]=0$; $\\alpha_{i}(t)$ is fully random
+* Active managers believe we can predict alpha and its not fully random
+
+
+### CAPM for portfolios
+
+* Return of portfolio $r_{p}~=~\\sum w_{i}*(\\beta_{i}*r_{m}(t)+\\alpha_{i}(t))$
+* Beta of the portfolio is $\\beta_{p}=\\sum w_{i}*\\beta_{i}$
+* $r_{p}(t)=\\beta_{p}*r_{m}(t)+\\sum w_{i}*\\alpha_{i}(t)$
+    * CAPM would say alpha term is simply a random number with mean zero $\\alpha_{p}(t)$
+    * Active managers would use the summation formulation
+
+
+### Arbitrage Pricing Theory
+
+* Beta of market can be broken down into betas of different fields like fincance, tech, manufacturing etc
+
+
+# Lesson 15: How Hedge funds use the CAPM
+
+
+### Two stock CAPM math
+
+* $r_p = (w_a \\beta_a + w_b \\beta_b)*r_m + w_a \\alpha_a + w_b \\alpha_b$
+* If we make net beta as zero, we equate to zero market risk in case of long short investing
+
+
+### Summary
+
+* Assuming 
+    * We forecasted alpha
+    * We got beta pf the stock
+    
+* CAPM enables
+    * minimize market risk by making beta of portfolio to be zero
+    * allocate weighst to stocks ion the portfolio such that above happens 
+
+
+# Lesson 16: Technical Analysis
+
+
+### Characteristics of TA
+* Uses price and volume only
+* Compute indicators by statistics on data
+* There is information in price
+
+
+### When is TA effective
+* Individual indicators are weak
+* Combining multiple indicators makes predictions stronger
+* Look for contrasts (Stock vs Market)
+* Works better for shorter time periods than longer time periods
+* Fundamental factors have higher value when horizon is longer
+
+
+### Momentum
+
+* n-day momentum, $momentum_{t} = \\frac{price_{t}}{price_{t-n}}-1$
+* -0.5 to +0.5
+
+
+### Simple moving average
+
+* n-day SMA, IndicatorSMA$_t = \\frac{price_{t}}{\\frac{\\sum price_t}{n}}-1$
+* -0.5 to +0.5
+* Could be used as proxy for underlying value especially with window is large
+    * If price above the average, it might indicate the stock is overpriced and bound to fall
+    * If stock is below average, it might indicate the stock is undervalued and bound to rise
+* The points where moving average curve and price curve intesects could be used as trading signals
+
+
+
+### Bollinger Bands
+
+* have moving average and moving standrd deviation curves drawn
+    * When price is going to fall inside the band at +2$\\sigma$, it could be a sell signal
+    * When price is goign to rise inside the band at -2$\\sigma$, it could be a buy signal
+* -1 to +1
+
+
+### Normalization
+
+* Technical indicators ahve to normalized to allot equal importance to each indicators
+
+
+# Lesson 17: Dealing with Data
+
+* data is sampled at lowest resolution called tick which indicates a successful transaction (only when buy and sell match)
+
+* **Stock Split** happens usually when the stock becomes very high price (n:1)
+    * creates issue when we feed in data to our algorithm
+    * adjusted close will adjust the prices by back tracking
+        * At the latest day, actual price and adjusted close match
+
+* **Dividends** comapny payouts
+    * Adjusted close will reduce the price on the day previous to dividend pay by an amount of dividend
+        * At the latest day, actual price and adjusted close match
+        
+
+### Survivorship Bias
+
+* Use survivor bias free data
+
+
+# Lesson 18: Efficient Market Hypothesis
+
+
+### Assumptions
+
+* Large number of investors
+* New info arrives randomly
+* prices adjust quickly
+* Proces reflect all available information
+
+
+### Three forms of EMH
+
+* **Weak** Future prices cannot be predicted by historical prices
+* **Semi-Strong** Prices adjust rapidly to new public info
+* **Strong** Prices reflect all information public and private
+
+
+### Not considered to be true
+
+
+# Lesson 19: The Fundamental Law of active portfolio management
+
+
+### Information Ratio (IR)
+
+* $return_p = \\beta_p *market + \\alpha_p$
+* $\\alpha_p$ is the skill of fund manager of portfolio
+* IR = $\\frac{mean(\\alpha_p)}{std(\\alpha_p)}$
+* Sharpe ratio of excess return
+
+
+### Information Coefficient (IC)
+
+* Correlation of forecasts to returns
+* 0 to 1
+
+
+### Breadth (BR)
+
+* Number of trading oppurtunities per year
+
+
+### Grinold's Fundamental Law
+
+* $performance=skill*\\sqrt{breadth}$
+* $IR=IC*\\sqrt{BR}$ 
+
+
+## Coin flipping casino example
+
+* 1000 tables are tossing coins
+* You have 1000 tokens to bet
+* coins are biased with head's probability being 0.51
+
+
+### Option 1: Betting all tokens on a single table
+
+* Expected return = $1000*0.51-1000*0.49 = 20$
+* But the risk is too high
+    * standard deviation = $\\sqrt{1000^2 - 20^2}=1000$
+* risk discounted reward = $\\frac{20}{1000}=0.02$
+
+
+### Option 2: Betting a token each on all tables
+
+* Expected return = $(0.51-0.49)*1000=20$
+* Standard deviation = $\\sqrt{1000*(0.51+0.49)1^2 - 20^2}=\\sqrt{1000-400}=24.49$
+* risk discounted reward = $\\frac{20}{24.49}=0.82$
+
+
+### Observations
+
+* SR_2 = 0.82 >> SR_1 = 0.02
+* SR_2 ~= SR_1* $\\sqrt{1000}$
+* Coincidence? I think not.
+
+
+# Lesson 20: Portfolio optimization and the efficient frontier
+
+$*$ **Risk is $\\sigma_{daily returns}$**
+
+
+### Why covariance matters?
+
+* Combining anti-correlated stocks would reduce risk i.e., standard deviation
+* Combining strongly correlated stocks wouldn't add much to return or risk of the portfolio which actually might remain nearly the same
+
+
+### Mean Variance Optimization (MVO)
+
+* Inputs:
+    * Expected return
+    * volatility
+    * covariance of daily returns
+    * target return of the portfolio
+* Output
+    * Asset weights for portfolio that minimizes risk
+    
+
+
+### The Efficient Frontier
+
+![efficient-frontier.png](attachment:efficient-frontier.png)
+
+* Dont go on the curve to a point where you reward is less for the same amount of risk
+* If you are inside the curve, we can do better
+* Tangent to the curve gives max sharpe ratio
